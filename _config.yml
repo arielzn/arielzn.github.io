@@ -1,0 +1,21 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+title: Personal pastebin
+#email: kmz@domain.com
+description: > # this means to ignore newlines until "baseurl:"
+  Personal blog mainly linux related. 
+  Useful commands, setup of config files, howtos for software or server deployments, 
+  and whatever feel like documenting.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://arielzn.github.io" # the base hostname & protocol for your site
+# twitter_username: jekyllrb
+github_username:  arielzn
+
+# Build settings
+markdown: kramdown
