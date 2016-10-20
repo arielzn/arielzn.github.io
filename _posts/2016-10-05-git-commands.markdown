@@ -61,7 +61,7 @@ $ git push master
 That's the setup.
 
 
-When developing in your fork it's a good idea to work in an independent 'dev' branch
+When developing in your fork it's a good idea to do it in an independent 'dev' branch
 so the master can be always kept in sync with upstream and compared with our current work one.
 
 {% highlight bash %}
@@ -69,7 +69,7 @@ $ git checkout -b dev
 $ git push origin dev
 {% endhighlight %}
 
-Then after modifying code and commiting you can compare with the master
+Then after working on the code and commiting you can compare with master
 
 {% highlight bash %}
 $ git diff master dev
