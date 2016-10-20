@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Useful git related commands"
-date:   2016-01-03 02:06:07 +0200
+date:   2016-10-05 02:06:07 +0200
 categories: git
 ---
 
@@ -34,7 +34,6 @@ upstream  https://github.com/someuser/repo.git (push)
 {% endhighlight %}
 
 
-
 When commits are made to the upstream repo you'll see on your fork "this branch
 is XXX commits behind someuser:master"
 
@@ -59,13 +58,21 @@ $ git push master
 
 
 
-That's the setup, it's a good idea to always work in an independent 'dev' branch
+That's the setup.
+
+
+When developing in your fork it's a good idea to work in an independent 'dev' branch
 so the master can be always kept in sync with upstream and compared with our current work one.
+
 {% highlight bash %}
 $ git checkout -b dev
-   work on your branch
-$ git diff master dev
+$ git push origin dev
 {% endhighlight %}
 
+Then after modifying code and commiting you can compare with the master
+
+{% highlight bash %}
+$ git diff master dev
+{% endhighlight %}
 
 
