@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Useful git related commands"
+title:  "Ubuntu server setup as standalone HPC machine"
 date:   2017-01-10 01:01:01 +0200
 categories: hpc server
 ---
