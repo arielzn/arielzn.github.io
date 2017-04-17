@@ -5,7 +5,7 @@ date:   2016-10-05 02:06:07 +0200
 categories: git
 ---
 
-**How to keep a fork synced with upstream**
+## How to keep a fork synced with upstream
 
 
 Assuming the repo 
@@ -17,62 +17,53 @@ was forked in your github account to
 https://github.com/youruser/repo.git
 ```
 
-{% highlight bash %}
+Clone your fork and add upstream repository
+
+```bash
 $ git clone  https://github.com/youruser/repo.git
 $ git remote add upstream https://github.com/otheruser/repo.git
-{% endhighlight %}
+```
 
-Check that upstream remote was added correctly
+If the process went smooth you should get
 
-{% highlight bash %}
+```bash
 $ git remote -v
 
 origin    https://github.com/youruser/repo.git (fetch)
 origin    https://github.com/youruser/repo.git (push)
 upstream  https://github.com/someuser/repo.git (fetch)
 upstream  https://github.com/someuser/repo.git (push)
-{% endhighlight %}
+```
 
 
-When commits are made to the upstream repo you'll see on your fork "this branch
-is XXX commits behind someuser:master"
+When commits are made to the upstream repo you'll see on github when you are standing on the updated branch
+"this branch is XXX commits behind someuser:updatedbranch".
 
-To sync, fetch the upstream commits
+To sync, go to your local repo, fetch the upstream commits and merge with the local branch. If the updated
+branch is e.g. the master one, the steps would be
 
-{% highlight bash %}
+```bash
 $ git fetch upstream
-{% endhighlight %}
-
-and merge with our local master branch, make sure you are in master before
-
-{% highlight bash %}
 $ git checkout master
 $ git merge upstream/master
-{% endhighlight %}
+```
 
-then push to your fork
+and then push to your github fork to update it
 
-{% highlight bash %}
+```bash
 $ git push master
-{% endhighlight %}
+```
+
+That's it.
 
 
+When developing your fork it's a good idea to work in an independent 'dev' branch,
+this way the master can be kept in sync with upstream (by following the previous steps) and 
+compared with our current work one.
+We create and push it doing
 
-That's the setup.
-
-
-When developing in your fork it's a good idea to do it in an independent 'dev' branch
-so the master can be always kept in sync with upstream and compared with our current work one.
-
-{% highlight bash %}
+```bash
 $ git checkout -b dev
 $ git push origin dev
-{% endhighlight %}
-
-Then after working on the code and commiting you can compare with master
-
-{% highlight bash %}
-$ git diff master dev
-{% endhighlight %}
-
+```
 
