@@ -9,9 +9,7 @@
 title: Personal pastebin
 #email: kmz@domain.com
 description: > # this means to ignore newlines until "baseurl:"
-  Personal blog mainly linux related. 
-  Useful commands, setup of config files, howtos for software or server deployments, 
-  and whatever feel like documenting.
+  Personal blog with GNU/Linux related information I want to remember.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://arielzn.github.io" # the base hostname & protocol for your site
 # twitter_username: jekyllrb
