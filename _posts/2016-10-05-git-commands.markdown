@@ -70,13 +70,12 @@ $ git push origin dev
 
 ## How to use diferent identities for git repos
 
-From https://github.com/blog/2131-git-2-8-has-been-released
-
+Option available starting with git v2.8 [(relase entry)](https://github.com/blog/2131-git-2-8-has-been-released).
 
 Tell Git to force you set user.name and user.email explicitly before it will let you commit:
 
 ```bash
-git config --global user.useconfigonly true
+$ git config --global user.useconfigonly true
 ```
 
 In case you had previously configured a global identitiy remove that
@@ -85,7 +84,7 @@ In case you had previously configured a global identitiy remove that
 $ git config --global --unset-all user.email
 ```
 
-Then you will have to set your specific identity to every repository you previously had
+Afterwards, you will have to set your specific identity for every repository you had
 (and every new one you clone).
 To set the desired one for each repo do
 
