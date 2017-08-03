@@ -67,3 +67,33 @@ $ git checkout -b dev
 $ git push origin dev
 ```
 
+
+## How to use diferent identities for git repos
+
+From https://github.com/blog/2131-git-2-8-has-been-released
+
+
+Tell Git to force you set user.name and user.email explicitly before it will let you commit:
+
+```bash
+git config --global user.useconfigonly true
+```
+
+In case you had previously configured a global identitiy remove that
+
+```bash
+$ git config --global --unset-all user.email
+```
+
+Then you will have to set your specific identity to every repository you previously had
+(and every new one you clone).
+To set the desired one for each repo do
+
+```bash
+$ git config user.email "you@example.com"
+$ git config user.name "Your Name"
+```
+
+In case you forget to setup that for one particular repo you'll be reminded to do so in your next commit.
+
+
