@@ -170,7 +170,7 @@ the bash environment and vim.
 
 1. Login with the new user
 1. Get the first playbook:
-  * `$ curl -Ls https://raw.githubusercontent.com/arielzn/dotfiles/master/arch_install/ansible_init_setup.yml`
+  * `$ curl -O https://raw.githubusercontent.com/arielzn/dotfiles/master/arch_install/ansible_init_setup.yml`
 1. Run it with become option: `$ ansible-playbook -b -K ansible_init_setup.yml`
 1. Compile downloaded sources for `pikaur` helper:
   * `$ cd /tmp`
@@ -185,7 +185,7 @@ the bash environment and vim.
   * `$ pikaur -S powerline-fonts-git i3-gnome py3status python-pydbus byobu google-chrome`
 1. Reboot: `$ sudo reboot`
 1. Setup local user environment:
-  * `$ curl -Ls https://raw.githubusercontent.com/arielzn/dotfiles/master/arch_install/ansible_user_env.yml`
+  * `$ curl -O https://raw.githubusercontent.com/arielzn/dotfiles/master/arch_install/ansible_user_env.yml`
   * `$ ansible-playbook ansible_user_env.yml`
 
 The install finishes with a bit less than 6GB used in `/` not bad for a complete DE with all the basics apps in place (Firefox and Chrome browsers, Office Apps, Photo editing and Media reproduction).
