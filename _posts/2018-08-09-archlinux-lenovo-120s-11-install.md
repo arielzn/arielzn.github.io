@@ -72,7 +72,7 @@ Now we make the image clone of the drive with `dd`:
 
     # dd conv=sync,noerror bs=1M if=/dev/mmcblk0  of=/mnt/extdrive/backup_120s.img status=progress
 
-This image can be applied back at any time[link to arch wiki] to the eMMC drive to restore it completely to factory state.
+This image can be [applied back at any time](https://wiki.archlinux.org/index.php/Dd#Disk_cloning_and_restore) to the eMMC drive to restore it completely to factory state.
 
 
 ## Partitioning for Linux using an encrypted LVM for `/`
