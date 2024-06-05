@@ -84,18 +84,28 @@ Setup btrfs subvolumes
     # btrfs subvolume create /mnt/root
     # btrfs subvolume create /mnt/home
     # btrfs subvolume create /mnt/pkgs
-    # btrfs subvolume create /mnt/snapshots
+    # btrfs subvolume create /mnt/varlogs
+    # btrfs subvolume create /mnt/vartemp
     # umount /mnt
 
 Mount the subvolumes and efi
 
     # mount -o noatime,nodiratime,compress=zstd,subvol=root /dev/mapper/arch /mnt
-    # mkdir -p /mnt/{boot/efi,home,var/cache/pacman,.snapshots,btrfsroot}
+    # mkdir -p /mnt/{boot/efi,home,var/cache/pacman,var/logs,var/tmp,btrfsroot}
     # mount -o noatime,nodiratime,compress=zstd,subvol=home /dev/mapper/arch /mnt/home
     # mount -o noatime,nodiratime,compress=zstd,subvol=pkgs /dev/mapper/arch /mnt/var/cache/pacman
-    # mount -o noatime,nodiratime,compress=zstd,subvol=snapshots /dev/mapper/arch /mnt/.snapshots
+    # mount -o noatime,nodiratime,compress=zstd,subvol=varlogs /dev/mapper/arch /mnt/var/logs
+    # mount -o noatime,nodiratime,compress=zstd,subvol=vartemp /dev/mapper/arch /mnt/var/tmp
     # mount -o noatime,nodiratime,compress=zstd,subvol=/ /dev/mapper/arch /mnt/btrfsroot
     # mount /dev/nvmeXp1 /mnt/boot/efi
+
+Many guides add also a snapshots subvolume mounted inside `/`, in order to
+configure `snapper` to handle automatic snapshots and the possibility to
+rollback. I'm not planning to have that setup, but if I want to manually
+create snapshots of `/` for backup purposes to sync on an external device, is
+good to have `/var/logs` and `/var/tmp` as different subvolumes to avoid
+including that on the backup.
+
 
 ## Install Arch
 
