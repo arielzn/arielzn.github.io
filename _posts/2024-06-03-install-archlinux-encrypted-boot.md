@@ -139,16 +139,16 @@ Mount the subvolumes and efi
   * `# visudo` and uncomment `%wheel ALL=(ALL) ALL`
 1. Generate machine id: `# dbus-uuidgen --ensure`
 
-## Setup custom environment and reboot
+## Setup custom desktop environment and reboot
 
-As i'm using gnome as the main desktop environment, I install it before
-rebooting, so after the reboot we'll be welcomed by GUI to be able to connect
-to the internet and keep customizing your system.
+As i'm using Gnome I install it before rebooting, so after the reboot we'll be
+welcomed by a GUI to be able to connect to the internet and keep customizing
+your system.
 
     # pacman -S gnome networkmanager
     # systemctl enable NetworkManager
 
-After that exit the new system and reboot
+After that exit the new system and reboot.
 
 Exit new system and reboot:
 
