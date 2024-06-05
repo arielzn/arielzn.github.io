@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Installing Arch Linux with encrypted boot and btrfs
+title:  "Installing Arch Linux with encrypted boot and btrfs"
 date:   2024-06-03 01:01:01 +0200
 categories: archlinux installation encrypted boot btrfs
 ---
