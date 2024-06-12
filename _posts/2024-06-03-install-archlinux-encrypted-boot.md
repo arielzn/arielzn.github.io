@@ -10,6 +10,11 @@ root partition (boot included) using the btrfs filesystem and GRUB bootloader.
 
 ### Useful trick
 
+{% alert tip %}
+This is a tip!
+{% endalert %}
+
+
 If you want to install from a graphic environment after booting the official
 Arch Linux install media, you can install a minimal window manager as sway,
 plus a terminal emulator and firefox.
