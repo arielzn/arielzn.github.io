@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Installing Arch Linux with encrypted boot and btrfs"
-date:   2024-06-03 01:01:01 +0200
+date:   2024-06-03 05:01:01 +0200
 categories: archlinux installation encrypted boot btrfs
 ---
 
@@ -112,6 +112,8 @@ subvolumes to avoid including that on the rootfs snapshot.
 
 ## Install Arch
 
+### Initial setup
+
 Install basic packages:
 
     # pacstrap -K /mnt base linux linux-firmware
@@ -140,16 +142,23 @@ Set a hostname
     # echo myhostname > /etc/hostname
 
 
-> **NOTE** For the locale and vconsole configurations below you should of
-> course adapt it to your region and language.
+Set the root password and add a sudo user
+
+    # passwd
+    # useradd -m -G wheel USERNAME
+    # passwd USERNAME
+
+Run `visudo` and uncomment the line `%wheel ALL=(ALL) ALL`.
+
+### Personal regional configurations
 
 Configure system locale. Edit `/etc/locale.gen` and enable the desired ones
 then
 
     # locale-gen
 
-Setup for `en_US` as language but `en_GB` specifics for dd/mm/yyyy, A4 paper
-and metric system
+Setup for `en_US` as language but `en_GB` specifics for dd/mm/yyyy date, A4
+paper and metric system
 
     # echo LANG=en_US.UTF-8 >> /etc/locale.conf
     # echo LC_TIME=en_GB.UTF-8 >> /etc/locale.conf
@@ -160,6 +169,8 @@ Setup the vconsole
 
     # echo KEYMAP=us >> /etc/vconsole.conf
     # echo FONT=eurlatgr >> /etc/vconsole.conf
+
+### Boot setup
 
 Generate initial ramdisk environment. Edit `/etc/mkinitcpio.conf`, for the
 `HOOKS` variable add `consolefont` after `keymap` and `encrypt` before
@@ -184,19 +195,11 @@ Install GRUB
     # grub-mkconfig -o /boot/grub/grub.cfg
     # grub-install
 
-Set the root password and add a sudo user
-
-    # passwd
-    # useradd -m -G wheel USERNAME
-    # passwd USERNAME
-
-Run `visudo` and uncomment the line `%wheel ALL=(ALL) ALL`.
 
 ## Setup a desktop environment and reboot
 
-I'm using Gnome as DE, I prefer to install it before rebooting, so
-after that we'll be welcomed by a GUI to be able to connect to the
-internet and keep customizing the system.
+I'm using Gnome as DE, I prefer to install it before rebooting, so after that
+I'll be welcomed by a GUI to start using the system and keep customizing.
 
     # pacman -S gnome networkmanager
     # systemctl enable NetworkManager
