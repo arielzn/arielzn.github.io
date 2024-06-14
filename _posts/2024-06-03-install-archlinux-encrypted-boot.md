@@ -34,7 +34,7 @@ Disable Secureboot from BIOS. Boot from the usb and get online
 > to have room for the installs.
 >
 > Steps to get this *spartan* ArchLinux live GUI after booting and
-> getting an internet connection:
+> getting an internet connection
 >
 >     # mount -o remount,size=4g /run/archiso/cowspace
 >     # pacman -Sy
@@ -45,14 +45,16 @@ Disable Secureboot from BIOS. Boot from the usb and get online
 > for applications type `firefox` press enter and voilà. `Mod+Shift+E` exit sway.
 > By default Mod is the Meta key (the one with ~~Windows~~ Logo).
 
-**WARNING**: This guide assumes a **full wipe** of your drive to install just
-Arch Linux on it.  If you want to create a dump of your current drive state:
-
-    # dd conv=sync,noerror bs=1M if=/dev/nvmeX | pigz -c  > /path/to/backup.img.g
-
-This image can be [applied back at any
-time](https://wiki.archlinux.org/index.php/Dd#Disk_cloning_and_restore) to
-restore the drive to the dump state.
+> **WARNING**
+>
+> This guide assumes a **full wipe** of your drive to install just Arch Linux
+> on it.  If you want to create a dump of your current drive state
+>
+>     # dd conv=sync,noerror bs=1M if=/dev/nvmeX | pigz -c  > /path/to/backup.img.gz
+>
+> This image can be [applied back at any
+> time](https://wiki.archlinux.org/index.php/Dd#Disk_cloning_and_restore) to
+> restore the drive to the dump state.
 
 Cleanup all partitions on the install device
 
@@ -62,16 +64,17 @@ Partition the install device
 
     # gdisk /dev/nvmeX
 
-Create a partition with 500M for EFI (EF00).
-Create another using all the remaining space, leave all defaults options.
-Only in case the drive changes are not captured with `lsblk` reboot.
+Create a partition with 500M for EFI (type code: EF00).
+Create a second one using all the remaining space, leave all defaults options.
+Write the setup and quit gdisk.
+Only in case the drive changes are not captured with `lsblk`, reboot.
 
 Create the filesystem for the EFI partition
 
     # mkfs.vfat -F32 -n EFI /dev/nvmeXp1
 
-> **NOTE** Since GRUB 2.12rc1 there's limited support for LUKS2. For the moment
-> it can only unlock key slots using the PBKDF2 algorithm, not Argon2.
+> **NOTE** Since GRUB 2.12rc1 there's only limited support for LUKS2. For the
+> moment it can only unlock key slots using the PBKDF2 algorithm, not Argon2.
 
 Setup the main encrypted partition:
 
@@ -168,24 +171,26 @@ Build the image
 
     # mkinitcpio -p linux
 
-Setup GRUB. Edit `/etc/default/grub` and set
+Configure GRUB. Edit `/etc/default/grub` and set
 
 
     GRUB_CMDLINE_LINUX="cryptdevice=UUID=XXX-XXX-XXX:arch"
     GRUB_ENABLE_CRYPTODISK=y
 
-You can use `blkid` to get the the UUID for `/dev/nvmeXp2`.
+You can use `blkid` to get the the UUID for the encrypted partition `/dev/nvmeXp2`.
+
 Install GRUB
 
     # grub-mkconfig -o /boot/grub/grub.cfg
     # grub-install
 
-Set the root password with `passwd`. Add a sudo user, run `visudo` and
-uncomment the line `%wheel ALL=(ALL) ALL` then
+Set the root password and add a sudo user
 
+    # passwd
     # useradd -m -G wheel USERNAME
     # passwd USERNAME
 
+Run `visudo` and uncomment the line `%wheel ALL=(ALL) ALL`.
 
 ## Setup a desktop environment and reboot
 
