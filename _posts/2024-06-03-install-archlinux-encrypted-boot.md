@@ -95,12 +95,11 @@ Setup btrfs subvolumes
 Mount the subvolumes and efi partition
 
     # mount -o noatime,nodiratime,compress=zstd,subvol=root /dev/mapper/arch /mnt
-    # mkdir -p /mnt/{boot/efi,home,var/cache/pacman,var/logs,var/tmp,btrfsroot}
+    # mkdir -p /mnt/{boot/efi,home,var/cache,var/logs,var/tmp}
     # mount -o noatime,nodiratime,compress=zstd,subvol=home /dev/mapper/arch /mnt/home
     # mount -o noatime,nodiratime,compress=zstd,subvol=varcache /dev/mapper/arch /mnt/var/cache
     # mount -o noatime,nodiratime,compress=zstd,subvol=varlogs /dev/mapper/arch /mnt/var/logs
     # mount -o noatime,nodiratime,compress=zstd,subvol=vartmp /dev/mapper/arch /mnt/var/tmp
-    # mount -o noatime,nodiratime,compress=zstd,subvol=/ /dev/mapper/arch /mnt/btrfsroot
     # mount /dev/nvmeXp1 /mnt/boot/efi
 
 Many guides add also a snapshots subvolume mounted inside `/`, in order to
