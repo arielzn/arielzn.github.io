@@ -134,7 +134,7 @@ Set the time zone:
 
 Configure hardware clock
 
-    # hwclock --systohc`
+    # hwclock --systohc
 
 Set a hostname
 
