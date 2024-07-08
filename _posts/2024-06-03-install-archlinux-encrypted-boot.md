@@ -116,9 +116,9 @@ subvolumes to avoid including that on the rootfs snapshot.
 Install basic packages:
 
     # pacstrap -K /mnt base linux linux-firmware
-                    grub efibootmgr             # boot stuff
-                    intel-ucode                 # for intel cpus
-                    vim bash-completion         # useful tools
+                    grub efibootmgr btrfs-progs   # boot and fs stuff
+                    intel-ucode                   # for intel cpus
+                    vim bash-completion           # useful tools
 
 Generate fstab entries
 
