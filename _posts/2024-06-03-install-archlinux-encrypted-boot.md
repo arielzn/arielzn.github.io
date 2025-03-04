@@ -118,7 +118,7 @@ Install basic packages:
     # pacstrap -K /mnt base linux linux-firmware
                     grub efibootmgr btrfs-progs   # boot and fs stuff
                     intel-ucode                   # for intel cpus
-                    vim bash-completion           # useful tools
+                    vim bash-completion sudo      # useful tools
 
 Generate fstab entries
 
@@ -147,7 +147,7 @@ Set the root password and add a sudo user
     # useradd -m -G wheel USERNAME
     # passwd USERNAME
 
-Run `visudo` and uncomment the line `%wheel ALL=(ALL) ALL`.
+Run `EDITOR=vim visudo` and uncomment the line `%wheel ALL=(ALL) ALL`.
 
 ### Personal regional configurations
 
